@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="AdminGroup" date="1245704236" format="1.1" version="1.2"}%
+---+!! Topic Count Plugin
+
+%$SHORTDESCRIPTION%
+
+%TOC%
+
+---++ Syntax Rules
+
+   * =%<nop>TOPICCOUNT%= - shows the number of topics in the current web
+   * =%<nop>TOPICCOUNT{parameters}%= - see list of parameters below
+
+%TABLE{columnwidths="20%,30%,15%,40%"}%
+| *Parameter* | *Comment* | *Default value* | *Example* |
+| =web=       | Web name to search in. Possible values: \
+%BB% one web \
+%BB% a comma-separated list of web names \
+%BB% a wildcard * to search in all webs; exclude topics using =excludeweb= | the current web | =web="<nop>%WEB%"=, =web="<nop>%WEB%, <nop>Main"=, =web="*"= |
+| =excludeweb= | Comma-separated list of web names to not search in | none | =web="*" excludeweb="%SYSTEMWEB%"= |
+| =topic=     | Topic names to search. Use this parameter when you have search results. Possible values: \
+%BB% a comma-separated list of topic names \
+%BB% a wildcard =*= to search in all topics in the web; exclude topics using =excludetopics= | all topics in the current web | =topic="<nop>%TOPIC%"=, =topic="<nop>%TOPIC%, <nop>WebHome"=, =topic="*"= |
+| =excludetopic= | Comma-separated list of topic names to not show the attachments of | none | =excludetopic="<nop>WebPreferences, <nop>WebHome"= |
+| =permissiononly= | Set to =on= to only count topics the current user has permissions to view. | =off= | =permissiononly="on"= |
+
+
+---++ Test
+<verbatim>
+%TOPICCOUNT%
+</verbatim>
+
+Output (if installed):
+
+%TOPICCOUNT%
+
+<verbatim>
+%TOPICCOUNT{
+web="*"
+excludeweb="%WEB%"
+}%
+</verbatim>
+
+Output (if installed):
+
+%TOPICCOUNT{
+web="*"
+excludeweb="%WEB%"
+}%
+
+<verbatim>
+%TOPICCOUNT{
+web="%USERSWEB%"
+excludetopics="WebHome, WebPreferences"
+permissiononly="on"
+}%
+</verbatim>
+
+Output (if installed):
+
+%TOPICCOUNT{
+web="%USERSWEB%"
+excludetopics="WebHome, WebPreferences"
+permissiononly="on"
+}%
+
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+
+---++ Plugin Info
+This plugin uses Foswiki:Extensions/TopicDataHelperPlugin
+
+|  Authors: | Foswiki:Main.ArthurClemens |
+|  Copyright &copy;: | Foswiki:Main.ArthurClemens |
+|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
+|  Version: | %$VERSION% |
+|  Release: | %$RELEASE% |
+|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  01 Apr 2010 | V.1.0 Arthur Clemens: First release. |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Home: | http://foswiki.org/Extensions/%TOPIC% |
+|  Support: | http://foswiki.org/Support/%TOPIC% |
